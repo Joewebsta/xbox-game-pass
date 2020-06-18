@@ -234,5 +234,5 @@ const GAMES = [
   {name: "Yakuza Kiwami", imgURL: "http://store-images.s-microsoft.com/image/apps.175…fd3d82976ea7.f6274c26-a75d-456d-92d8-83a119bc0bf3", multiplayer: "false", platforms: "Console", releaseDate: 2020},
   {name: "Yoku's Island Express", imgURL: "http://store-images.s-microsoft.com/image/apps.613…66b60d3712e6.9ef1c3fb-e149-49b9-871a-1db74017c94f", multiplayer: "false", platforms: "Console", releaseDate: 2018},
   {name: "Yooka-Laylee", imgURL: "http://store-images.s-microsoft.com/image/apps.383…1b0b89424c00.58cf85ca-6c88-4e53-9649-3a78716df855", multiplayer: "true", platforms: "Console", releaseDate: 2017},
-  {name: "Zoo Tycoon: Ultimate Animal Collection", imgURL: "http://store-images.s-microsoft.com/image/apps.512…309db86bfc65.c3b924f9-c159-49f3-958b-4f229bff41d4", multiplayer: "true", platforms: "Console", releaseDate: 2017,
+  {name: "Zoo Tycoon: Ultimate Animal Collection", imgURL: "http://store-images.s-microsoft.com/image/apps.512…309db86bfc65.c3b924f9-c159-49f3-958b-4f229bff41d4", multiplayer: "true", platforms: "Console", releaseDate: 2017},
 ]
