@@ -1,5 +1,7 @@
 const games = document.querySelectorAll('.m-product-placement-item');
 const gamesArray = Array.from(games);
+const gameDivsWrapper = document.querySelector('.gameDivsWrapper');
+const body = document.querySelector('body');
 
 function scrapeGamesHTML(array) {
   return array.map(game => {
@@ -19,10 +21,32 @@ function scrapeGamesHTML(array) {
   });
 }
 
-const sanitizedGames = scrapeGamesHTML(gamesArray);
-sanitizedGames.forEach(game => console.log(game.name));
+function clearHTML() {
+  gameDivsWrapper.remove();
+}
 
-// console.log(sanitizedGames);
+
+function displayGamesInBrowser(sanitizedArray) {
+  clearHTML();
+
+  sanitizedArray.forEach(game => {
+    name = game.name.replace(/[\n\r]+/g, '').replace(/\s{2,10}/g, ' ')
+    
+    const text = `
+    <pre style="margin: 0;">
+      {
+        name: "${name}", 
+        imgURL: "${game.imgURL}", 
+        multiplayer: "${game.multiplayer}", 
+        platforms: "${game.platforms}", 
+        releaseDate: ${game.releaseDate},
+      },
+    </pre>`
+    body.innerHTML += text;
+  })
+}
+
+displayGamesInBrowser(scrapeGamesHTML(gamesArray));
 
 //Rating - LATER
 //Categorty - LATER
