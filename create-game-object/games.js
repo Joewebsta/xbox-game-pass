@@ -20,8 +20,9 @@ function scrapeGamesHTML(array) {
 }
 
 const sanitizedGames = scrapeGamesHTML(gamesArray);
+sanitizedGames.forEach(game => console.log(game.name));
 
-console.log(sanitizedGames);
+// console.log(sanitizedGames);
 
 //Rating - LATER
 //Categorty - LATER
