@@ -1892,19 +1892,17 @@ const games2019 = GAMES.filter(game => game.releaseDate === 2019);
 const games2018 = GAMES.filter(game => game.releaseDate === 2018);
 const games2017 = GAMES.filter(game => game.releaseDate === 2017);
 const games2016 = GAMES.filter(game => game.releaseDate === 2016);
-// console.log(GAMES.filter( game => game.releaseDate === 2018));
-// console.log(GAMES.filter( game => game.releaseDate === 2017));
-// console.log(GAMES.filter( game => game.releaseDate === 2016));
 
 function displayGames(games, containerEl) {
   games.forEach(game => {
-      const divEl = document.createElement('div');
-      divEl.className = 'game-container';
-      const imgEl = document.createElement('img');
-      imgEl.src = game.imgURL;
-
-      divEl.appendChild(imgEl);
-      containerEl.appendChild(divEl);
+    
+    const gameContent = `
+    <div class="game-container">
+      <img src="${game.imgURL}">
+      <div class="rating">68</div>
+    </div>
+  `
+  containerEl.innerHTML += gameContent;
     })
 }
 
@@ -1915,3 +1913,7 @@ displayGames(games2019, games2019Section);
 displayGames(games2018, games2018Section);
 displayGames(games2017, games2017Section);
 displayGames(games2016, games2016Section);
+
+// TODO
+// COLLECT GENRES
+//COLLECT RATINGS

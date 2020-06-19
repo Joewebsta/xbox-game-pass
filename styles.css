@@ -9,10 +9,22 @@ h2 {
 
 .game-container {
   margin: 10px;
+  position: relative;
 }
 
 img {
   width: 220px;
   border-radius: 10px;
   display: block;
+}
+
+.rating {
+  position: absolute;
+    display: inline-block;
+    background: #FFCC32;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    left: 174px;
+    top: 282px;
 }
