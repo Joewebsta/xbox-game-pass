@@ -1668,7 +1668,7 @@ const GAMES = [
     imgURL: "http://store-images.s-microsoft.com/image/apps.17742.14176345306313891.0fa5fe6f-5d91-4d91-915f-754bdc7e813a.0b5c9633-0db7-47d2-8b71-923a27af53c5", 
     multiplayer: "false", 
     platforms: "Console", 
-    releaseDate: 2799,
+    releaseDate: 2019,
   },
 
   {
@@ -1880,6 +1880,10 @@ const GAMES = [
   },
 ]
 
+// TODO
+// COLLECT GENRES
+// COLLECT RATINGS
+
 const gamesContainer = document.querySelector('.games-container');
 const games2020Section = document.querySelector('.games-2020');
 const games2019Section = document.querySelector('.games-2019');
@@ -1906,14 +1910,19 @@ function displayGames(games, containerEl) {
     })
 }
 
-//PRACTICE: CREATE REDUCE FUNCTION TO COUNT THE TOTAL NUMBER OF GAMES PER YEAR
-
 displayGames(games2020, games2020Section);
 displayGames(games2019, games2019Section);
 displayGames(games2018, games2018Section);
 displayGames(games2017, games2017Section);
 displayGames(games2016, games2016Section);
 
-// TODO
-// COLLECT GENRES
-//COLLECT RATINGS
+function displayGameCount(games) {
+  const gamesCount = GAMES.reduce((acc, currentGame) => {
+    let year = currentGame.releaseDate;
+  
+    acc[year] ? acc[year] += 1 : acc[year] = 1;
+    return acc;
+  }, {})
+  
+  console.log(gamesCount);
+}
