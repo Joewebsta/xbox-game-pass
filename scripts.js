@@ -1882,15 +1882,34 @@ const GAMES = [
 
 const gamesContainer = document.querySelector('.games-container');
 
-GAMES.forEach( game => {
-  const gameContent = `
-    <div class="game-container">
-      <img src="${game.imgURL}">
-    </div>
-  `
-  gamesContainer.innerHTML += gameContent;
-})
+console.log('------2020----------');
+const games2020 = GAMES.filter(game => game.releaseDate === 2020);
+// console.log('------2019----------');
+const games2019 = GAMES.filter(game => game.releaseDate === 2019);
+// console.log('---------2018-------');
+// console.log(GAMES.filter( game => game.releaseDate === 2018));
+// console.log('--------2017--------');
+// console.log(GAMES.filter( game => game.releaseDate === 2017));
+// console.log('--------2016--------');
+// console.log(GAMES.filter( game => game.releaseDate === 2016));
 
-// <h2 class="game-name">
-//   ${game.name}
-// </h2>
+function displayGames(games, el) {
+  const releaseYear = games[0].releaseDate;
+  const headerHTML = `
+    <h1>${releaseYear}</h1>
+  `
+  gamesContainer.innerHTML = headerHTML;
+  
+  games.forEach(game => {
+      
+    const gameHTML = `
+        <div class="game-container">
+          <img src="${game.imgURL}">
+        </div>
+      `
+      gamesContainer.innerHTML += gameHTML;
+    })
+}
+
+displayGames(games2020);
+// displayGames(games2019);
