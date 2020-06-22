@@ -1880,49 +1880,55 @@ const GAMES = [
   },
 ]
 
-// TODO
-// COLLECT GENRES
-// COLLECT RATINGS
-
 const gamesContainer = document.querySelector('.games-container');
-const games2020Section = document.querySelector('.games-2020');
-const games2019Section = document.querySelector('.games-2019');
-const games2018Section = document.querySelector('.games-2018');
-const games2017Section = document.querySelector('.games-2017');
-const games2016Section = document.querySelector('.games-2016');
 
-const games2020 = GAMES.filter(game => game.releaseDate === 2020);
-const games2019 = GAMES.filter(game => game.releaseDate === 2019);
-const games2018 = GAMES.filter(game => game.releaseDate === 2018);
-const games2017 = GAMES.filter(game => game.releaseDate === 2017);
-const games2016 = GAMES.filter(game => game.releaseDate === 2016);
-
-function displayGames(games, containerEl) {
+function displayGames(games) {
   games.forEach(game => {
     
     const gameContent = `
     <div class="game-container">
-      <img src="${game.imgURL}">
-      <div class="rating">68</div>
+    <img src="${game.imgURL}">
+    <div class="rating">68</div>
     </div>
-  `
-  containerEl.innerHTML += gameContent;
-    })
+    `
+    gamesContainer.innerHTML += gameContent;
+  })
 }
 
-displayGames(games2020, games2020Section);
-displayGames(games2019, games2019Section);
-displayGames(games2018, games2018Section);
-displayGames(games2017, games2017Section);
-displayGames(games2016, games2016Section);
+function sortGamesByName(games, attribute) {
+  return games.sort((a, b) => {
+    let nameA = a[attribute].toUpperCase();
+    let nameB = b[attribute].toUpperCase();
+
+    return nameA > nameB ? 1 : -1;
+  })
+}
+
+
+
+// displayGames(GAMES, gamesContainer);
+displayGames(sortGamesByName(GAMES, 'name'));
 
 function displayGameCount(games) {
   const gamesCount = GAMES.reduce((acc, currentGame) => {
     let year = currentGame.releaseDate;
-  
+    
     acc[year] ? acc[year] += 1 : acc[year] = 1;
     return acc;
   }, {})
   
   console.log(gamesCount);
-}
+}  
+  
+  // TODO
+  // COLLECT GENRES
+  // COLLECT RATINGS
+  
+  //SORT
+  // Year
+  // Name
+  
+  // FILTER
+  // Multiplayer
+  
+  // SEARCH

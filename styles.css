@@ -1,8 +1,8 @@
-h2 { 
+/* h2 { 
   margin-left: 20px;
-}
+} */
 
-.year-container {
+.games-container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -10,6 +10,8 @@ h2 {
 .game-container {
   margin: 10px;
   position: relative;
+  background: black;
+  border-radius: 10px;
 }
 
 img {
