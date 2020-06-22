@@ -1895,19 +1895,24 @@ function displayGames(games) {
   })
 }
 
-function sortGamesByName(games, attribute) {
+function sortGamesByName(games) {
   return games.sort((a, b) => {
-    let nameA = a[attribute].toUpperCase();
-    let nameB = b[attribute].toUpperCase();
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
 
     return nameA > nameB ? 1 : -1;
   })
 }
 
-
+function sortGamesByYear(games) {
+  return games.sort((a, b) => {
+    return a.releaseDate > b.releaseDate ? -1 : 1;
+  })
+}
 
 // displayGames(GAMES, gamesContainer);
-displayGames(sortGamesByName(GAMES, 'name'));
+// displayGames(sortGamesByName(GAMES));
+displayGames(sortGamesByYear(GAMES));
 
 function displayGameCount(games) {
   const gamesCount = GAMES.reduce((acc, currentGame) => {
@@ -1925,8 +1930,8 @@ function displayGameCount(games) {
   // COLLECT RATINGS
   
   //SORT
-  // Year
-  // Name
+  // Year (ascending and descending)
+  // Name (ascending and descending)
   
   // FILTER
   // Multiplayer
