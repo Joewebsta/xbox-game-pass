@@ -9,6 +9,22 @@
 </head>
 
 <body>
+  <section class="form-container">
+    <form action="" method="">
+      <label class="sort-label" for="sort">
+        <span>Sort:</span>
+        <select name="" id="sort">
+          <option value="name">Name</option>
+          <option value="releaseDate">Year</option>
+        </select>
+      </label>
+      <label class="filter-label" for="">
+        <span>Filter:</span>
+        <input type="radio" name="filter" value="all" checked> All games
+        <input type="radio" name="filter" value="multi"> Multiplayer games
+      </label>
+    </form>
+  </section>
   <section class="games-container"></section>
   <script src="scripts.js"></script>
 </body>

@@ -1,6 +1,16 @@
-/* h2 { 
+.form-container {
+  margin: 20px 0 10px 10px;
+}
+
+.filter-label span, .sort-label span {
+  font-size: 16px;
+  font-weight: bold;
+
+}
+
+.filter-label {
   margin-left: 20px;
-} */
+}
 
 .games-container {
   display: flex;

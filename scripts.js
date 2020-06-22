@@ -1879,10 +1879,15 @@ const GAMES = [
     releaseDate: 2017,
   },
 ]
+const GAMESSPLICE = GAMES.splice(0,50);
 
-const gamesContainer = document.querySelector('.games-container');
+
+const formContainer = document.querySelector('.form-container');
+let gamesContainer = document.querySelector('.games-container');
 
 function displayGames(games) {
+  gamesContainer.textContent = "";
+  
   games.forEach(game => {
     
     const gameContent = `
@@ -1899,7 +1904,6 @@ function sortGamesByName(games) {
   return games.sort((a, b) => {
     let nameA = a.name.toUpperCase();
     let nameB = b.name.toUpperCase();
-
     return nameA > nameB ? 1 : -1;
   })
 }
@@ -1914,25 +1918,26 @@ function filterByMulti(games) {
   return games.filter(game => game.multiplayer);
 }
 
-// displayGames(GAMES, gamesContainer);
-// displayGames(sortGamesByName(GAMES));
-// displayGames(sortGamesByYear(GAMES));
-displayGames(filterByMulti(GAMES));
+function init() {
+  displayGames(sortGamesByName(GAMESSPLICE));
+}
 
-function displayGameCount(games) {
-  const gamesCount = GAMES.reduce((acc, currentGame) => {
-    let year = currentGame.releaseDate;
-    
-    acc[year] ? acc[year] += 1 : acc[year] = 1;
-    return acc;
-  }, {})
-  
-  console.log(gamesCount);
-}  
-  
+init();
+
+
+formContainer.addEventListener('input', (e) => {
+  let val = e.target.value;
+  if (val === 'releaseDate') return displayGames(sortGamesByYear(GAMESSPLICE));
+  if (val === 'name' || val === 'all') return displayGames(sortGamesByName(GAMESSPLICE));
+  if (val === 'multi') return displayGames(filterByMulti(GAMESSPLICE));
+});
+
+
   // TODO
-  // COLLECT GENRES
-  // COLLECT RATINGS
+  // Collect genres
+  // Collet ratings from metacritic
+  // Generate random ratings and update color
+  // Create loading animation?
   
   //SORT
   // Year (ascending and descending)
