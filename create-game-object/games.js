@@ -37,7 +37,7 @@ function displayGamesInBrowser(sanitizedArray) {
       {
         name: "${name}", 
         imgURL: "${game.imgURL}", 
-        multiplayer: "${game.multiplayer}", 
+        multiplayer: ${game.multiplayer}, 
         platforms: "${game.platforms}", 
         releaseDate: ${game.releaseDate},
       },
