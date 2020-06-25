@@ -29,20 +29,22 @@ function clearHTML() {
 function displayGamesInBrowser(sanitizedArray) {
   clearHTML();
 
-  sanitizedArray.forEach(game => {
+  sanitizedArray.forEach((game, idx) => {
     name = game.name.replace(/[\n\r]+/g, '').replace(/\s{2,10}/g, ' ')
-    
-    const text = `
-    <pre style="margin: 0;">
+    if (idx === 0 ) body.innerHTML += '"['
+
+    const text = 
+    `<pre style="margin: 0;">
       {
-        name: "${name}", 
-        imgURL: "${game.imgURL}", 
-        multiplayer: ${game.multiplayer}, 
-        platforms: "${game.platforms}", 
-        releaseDate: ${game.releaseDate},
-      },
-    </pre>`
+        "name":"${name}", 
+        "imgURL":"${game.imgURL}", 
+        "multiplayer":${game.multiplayer}, 
+        "platforms":"${game.platforms}", 
+        "releaseDate":${game.releaseDate},
+      },</pre>`
+    
     body.innerHTML += text;
+    if(idx === sanitizedArray.length - 1) body.innerHTML += ']"';
   })
 }
 
