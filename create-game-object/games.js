@@ -9,7 +9,7 @@ function scrapeGamesHTML(array) {
     const imgURL = game.querySelector('img.c-image').src;
     const multiplayer = game.dataset.multiplayer;
     const platforms = game.querySelector('span.c-glyph').getAttribute('aria-label');
-    const releaseDate = parseInt(game.dataset.releasedate.slice(0,4));
+    const releaseDate = parseInt(game.dataset.releasedate.slice(0, 4));
 
     return {
       name,
@@ -30,21 +30,24 @@ function displayGamesInBrowser(sanitizedArray) {
   clearHTML();
 
   sanitizedArray.forEach((game, idx) => {
-    name = game.name.replace(/[\n\r]+/g, '').replace(/\s{2,10}/g, ' ')
-    if (idx === 0 ) body.innerHTML += '"['
+    const name = game.name.replace(/[\n\r]+/g, '').replace(/\s{2,10}/g, ' ')
+    const lastItem = idx === sanitizedArray.length - 1;
 
-    const text = 
-    `<pre style="margin: 0;">
+    if (idx === 0) body.innerHTML += '['
+
+    const text =
+      `<pre style="margin: 0;">
       {
         "name":"${name}", 
         "imgURL":"${game.imgURL}", 
         "multiplayer":${game.multiplayer}, 
         "platforms":"${game.platforms}", 
-        "releaseDate":${game.releaseDate},
-      },</pre>`
-    
+        "releaseDate":${game.releaseDate}
+      }${lastItem ? '' : ','  }</pre>`
+      //REMOVE COMMA IF LAST ITEM
+
     body.innerHTML += text;
-    if(idx === sanitizedArray.length - 1) body.innerHTML += ']"';
+    if (lastItem) body.innerHTML += ']';
   })
 }
 
