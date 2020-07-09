@@ -8,8 +8,7 @@ fetch('games.json').then((response) => {
 });
 
 function initialize(games) {
-  GAMESSPLICE = games.splice(0,50);
-  displayGames(sortGamesByName(GAMESSPLICE));
+  displayGames(sortGamesByName(games));
 }
 
 const formContainer = document.querySelector('.form-container');
