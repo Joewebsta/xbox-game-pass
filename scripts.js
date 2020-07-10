@@ -10,9 +10,21 @@ function initialize(games) {
   const formContainer = document.querySelector('.form-container');
   const gamesContainer = document.querySelector('.games-container');
   const sortInput = document.querySelector('#sort');
+  
+  const gameYears = collectGameYears(games);
+  displayGames(sortGames(games));
 
-  sortGames(games);
+  function collectGameYears(games) {
+    const gameYears = games.reduce((years, game) => {
+      if (years.indexOf(game.releaseDate) === -1) {
+        years.push(game.releaseDate);
+      }
+      return years
+    }, []);
 
+    return gameYears.sort((a, b) => a < b ? 1 : -1);
+  }
+  
   function sortGames(games) {
     const sortType = sortInput.value;
 
@@ -23,7 +35,7 @@ function initialize(games) {
       if (sortType === 'releaseDateO') return a.releaseDate < b.releaseDate ? -1 : 1;
     })
 
-    displayGames(sortedGames);
+    return sortedGames
   }
 
   function displayGames(games) {
@@ -40,7 +52,7 @@ function initialize(games) {
     })
   }
 
-  formContainer.addEventListener('input', () => sortGames(games));
+  formContainer.addEventListener('input', () => displayGames(sortGames(games)));
 }
 
   // TODO
