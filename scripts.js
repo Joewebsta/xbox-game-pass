@@ -10,8 +10,9 @@ function initialize(games) {
   const formContainer = document.querySelector('.form-container');
   const gamesContainer = document.querySelector('.games-container');
   const sortInput = document.querySelector('#sort');
-  
-  const gameYears = collectGameYears(games);
+  const releastDateUl = document.querySelector('.release-date-ul'); 
+
+  displayGameYears(collectGameYears(games));
   displayGames(sortGames(games));
 
   function collectGameYears(games) {
@@ -21,10 +22,22 @@ function initialize(games) {
       }
       return years
     }, []);
-
+    
     return gameYears.sort((a, b) => a < b ? 1 : -1);
   }
-  
+
+  function displayGameYears(gameYears) {
+    gameYears.forEach(year => {
+      const yearLi = `
+      <li>
+        <label for="${year}">${year}</label>
+        <input type="checkbox" id="${year}" name="${year}" value="${year}">
+      </li>`
+
+      releastDateUl.innerHTML += yearLi;
+    })
+  }
+
   function sortGames(games) {
     const sortType = sortInput.value;
 
@@ -54,18 +67,3 @@ function initialize(games) {
 
   formContainer.addEventListener('input', () => displayGames(sortGames(games)));
 }
-
-  // TODO
-  // Collect genres
-  // Collet ratings from metacritic
-  // Generate random ratings and update color
-  // Create loading animation?
-
-  //SORT
-  // Year (ascending and descending)
-  // Name (ascending and descending)
-
-  // FILTER
-  // Multiplayer
-
-  // SEARCH

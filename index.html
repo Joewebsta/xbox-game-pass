@@ -11,20 +11,23 @@
 <body>
   <section class="form-container">
     <form action="" method="">
-      <label class="sort-label" for="sort">
-        <span>Sort:</span>
-        <select name="" id="sort">
-          <option value="nameA">Name (asc)</option>
-          <option value="nameD">Name (desc)</option>
-          <option value="releaseDateN">Release Date (newest)</option>
-          <option value="releaseDateO">Release Date (oldest)</option>
-        </select>
-      </label>
-      <label class="filter-label" for="">
-        <span>Filter:</span>
-        <input type="radio" name="filter" value="all" checked> All games
-        <input type="radio" name="filter" value="multi"> Multiplayer games
-      </label>
+      <div>
+        <label class="sort-label" for="sort">
+          <span>Sort:</span>
+          <select name="" id="sort">
+            <option value="nameA">Name (asc)</option>
+            <option value="nameD">Name (desc)</option>
+            <option value="releaseDateN">Release Date (newest)</option>
+            <option value="releaseDateO">Release Date (oldest)</option>
+          </select>
+        </label>
+      </div>
+      <div class="filter-container">
+        <fieldset>
+          <legend>Release Date</legend>
+          <ul class="release-date-ul"></ul>
+        </fieldset>
+      </div>
     </form>
   </section>
   <section class="games-container"></section>
