@@ -22,7 +22,7 @@ function initialize(games) {
       }
       return years
     }, []);
-    
+
     return gameYears.sort((a, b) => a < b ? 1 : -1);
   }
 
@@ -51,10 +51,15 @@ function initialize(games) {
     return sortedGames
   }
 
+  function filterGames(games, year) {
+    return games.filter(game => game.releaseDate === year);
+  }
+
   function displayGames(games) {
     gamesContainer.textContent = "";
 
     games.forEach(game => {
+      console.log(game);
       const gameContent = `
       <div class="game-container">
       <img src="${game.imgURL}">
@@ -65,5 +70,14 @@ function initialize(games) {
     })
   }
 
-  formContainer.addEventListener('input', () => displayGames(sortGames(games)));
+  formContainer.addEventListener('input', (e) => {
+    const year = Number(e.target.value);
+    const checked = e.target.checked;
+
+    if (checked) {
+      displayGames(filterGames(games, year));
+    } else {
+      displayGames(games);
+    }
+  });
 }
