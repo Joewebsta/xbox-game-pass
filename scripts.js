@@ -12,6 +12,8 @@ function initialize(games) {
   const sortInput = document.querySelector('#sort');
   const releastDateUl = document.querySelector('.release-date-ul'); 
 
+  let checkedYears = [];
+
   displayGameYears(collectGameYears(games));
   displayGames(sortGames(games));
 
@@ -51,15 +53,20 @@ function initialize(games) {
     return sortedGames
   }
 
-  function filterGames(games, year) {
-    return games.filter(game => game.releaseDate === year);
+  function filterGames(games, checkedYears) {
+    let finalFilteredGames = [];
+
+    for (year of checkedYears) {
+      filteredGames = games.filter(game => game.releaseDate === year);
+      finalFilteredGames = finalFilteredGames.concat(filteredGames);
+    }
+    return finalFilteredGames;
   }
 
   function displayGames(games) {
     gamesContainer.textContent = "";
 
     games.forEach(game => {
-      console.log(game);
       const gameContent = `
       <div class="game-container">
       <img src="${game.imgURL}">
@@ -75,9 +82,13 @@ function initialize(games) {
     const checked = e.target.checked;
 
     if (checked) {
-      displayGames(filterGames(games, year));
+      checkedYears.push(year);
+      displayGames(filterGames(games, checkedYears));
     } else {
-      displayGames(games);
+      // const yearIdx = checkedYears.indexOf(year);
+      // checkedYears.splice(yearIdx, 1);
+      // console.log(checkedYears);
+      // displayGames(games);
     }
   });
 }
