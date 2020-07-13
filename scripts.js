@@ -10,7 +10,7 @@ function initialize(games) {
   const formContainer = document.querySelector('.form-container');
   const gamesContainer = document.querySelector('.games-container');
   const sortInput = document.querySelector('#sort');
-  const releastDateUl = document.querySelector('.release-date-ul'); 
+  const releastDateUl = document.querySelector('.release-date-ul');
 
   let checkedYears = [];
 
@@ -85,10 +85,10 @@ function initialize(games) {
       checkedYears.push(year);
       displayGames(filterGames(games, checkedYears));
     } else {
-      // const yearIdx = checkedYears.indexOf(year);
-      // checkedYears.splice(yearIdx, 1);
-      // console.log(checkedYears);
-      // displayGames(games);
+      const yearIdx = checkedYears.indexOf(year);
+      checkedYears.splice(yearIdx, 1);
+
+      (checkedYears.length === 0) ? displayGames(games) : displayGames(filterGames(games, checkedYears));
     }
   });
 }
